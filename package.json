@@ -1,0 +1,24 @@
+{
+	"name": "mongodb-films",
+	"version": "1.0.0",
+	"description": "database film",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alessio9284/mongodb-films.git"
+	},
+	"author": "Alessio Torricelli",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Alessio9284/mongodb-films/issues"
+	},
+	"homepage": "https://github.com/Alessio9284/mongodb-films#readme",
+	"dependencies": {
+		"ejs": "^2.6.1",
+		"express": "^4.16.4",
+		"mongodb": "^3.2.3"
+	}
+}
