@@ -34,7 +34,6 @@ a:focus
 a:hover
 {
 	text-decoration: none;
-	color: #6a7dfe;
 	color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
 	color: -o-linear-gradient(left, #21d4fd, #b721ff);
 	color: -moz-linear-gradient(left, #21d4fd, #b721ff);
@@ -164,7 +163,6 @@ button:hover
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
 
-	background: #6a7dfe;
 	background: -webkit-linear-gradient(left, #90ee90, #008000);
 	background: -o-linear-gradient(left, #90ee90, #008000);
 	background: -moz-linear-gradient(left, #90ee90, #008000);
@@ -230,7 +228,6 @@ button:hover
 	z-index: -1;
 	width: 300%;
 	height: 100%;
-	background: #90ee90;
 	background: -webkit-linear-gradient(right, #90ee90, #008000, #90ee90, #008000);
 	background: -o-linear-gradient(right, #90ee90, #008000, #90ee90, #008000);
 	background: -moz-linear-gradient(right, #90ee90, #008000, #90ee90, #008000);
@@ -276,4 +273,42 @@ button:hover
 		min-width: 300px;
     	padding: 60px 30px 33px 30px;
     }
+}
+
+table
+{
+	width: 90%;
+	margin: 50px auto;
+	background: rgba(255, 255, 255, 0.5);
+	border: 1px solid green;
+	text-align: center;
+}
+
+
+thead > tr
+{
+	background: rgba(255, 255, 255, 0.5);
+	height: 50px;
+}
+
+
+tbody > tr:nth-child(odd)
+{
+	background: rgba(255, 255, 255, 0.2);
+}
+
+tfoot > tr
+{
+	background: rgba(255, 255, 255, 0.2);
+}
+
+a:hover
+{
+	cursor: pointer;
+	color: white;
+}
+
+#visualize
+{
+	margin: 15px auto;
 }
