@@ -5,14 +5,14 @@
 	</head>
 
 	<body>
-		<table class="table table-hover">
+		<table>
 			<thead>
 				<tr>
 					<th scope="col">N°</th>
 					<th scope="col">Title</th>
 					<th scope="col">Year</th>
-					<th scope="col">Genre</th>
 					<th scope="col">Actors</th>
+					<th scope="col">Genres</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,12 +22,32 @@
 					<th scope="row"><%= ++i %></th>
 					<td><%= films[x].title %></td>
 					<td><%= films[x].year %></td>
-					<td><%= films[x].cast %></td>
-					<td><%= films[x].genres %></td>
+
+					<td>
+						<% for(var y = 0; y < films[x].cast.length; y++) { %>
+						<p><%= films[x].cast[y] %></p>
+						<% } %>
+					</td>
+					<td>
+						<% for(var z = 0; z < films[x].genres.length; z++) { %>
+						<p><%= films[x].genres[z] %></p>
+						<% } %>
+					</td>
 				</tr>
-				<% if(x == 99) break; %>
 				<% } %>
 			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<div class="posizione" id="visualize">
+							<div class="animazione"></div>
+							<a class="btn" href="../">
+								Turn Back
+							</a>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</body>
 </html>

@@ -42,11 +42,11 @@ app.get('/document', function(req, red)
 		cur.collection("films").insertMany(films, function(err, res)
 		{
 			if (err) throw err;
-			console.log("film inseriti nel documento");
+
+			//console.log("Collection inserted!");
+
 			db.close();
 		});
-
-		db.close();
 	});
 	red.redirect('/');
 });
@@ -62,19 +62,10 @@ app.get('/truncate', function(req, red)
 
 		cur.collection("films").drop(function(err, res)
 		{
-			if (err) throw err;
+			//console.log("Collection deleted!");
 
-			if (res)
-			{
-				console.log("Collection deleted");
-			}
-			else
-			{
-				console.log("Collection not deleted");
-			}
+			db.close();
 		});
-
-		db.close();
 	});
 	red.redirect('/');
 });
@@ -83,6 +74,8 @@ app.get('/truncate', function(req, red)
 app.post('/visualize', function(req, red)
 {
 	var obj = req.body;
+	var limit = parseInt(obj.limit);
+	var year = parseInt(obj.year);
 
 	//console.log("obj: " + JSON.stringify(obj));
 
@@ -98,7 +91,7 @@ app.post('/visualize', function(req, red)
 
 			if(obj.title != "" && obj.year != "")
 			{
-				cur.collection("films").find({ title : obj.title, year : parseInt(obj.year) }).toArray(function(err, res)
+				cur.collection("films").find({ title : {$regex: ".*" + obj.title + ".*"}, year : year }).limit(limit).toArray(function(err, res)
 				{
 					if (err) throw err;
 
@@ -109,7 +102,7 @@ app.post('/visualize', function(req, red)
 			}
 			else if(obj.title != "")
 			{
-				cur.collection("films").find({ title : obj.title }).toArray(function(err, res)
+				cur.collection("films").find({ title : {$regex: ".*" + obj.title + ".*"} }).limit(limit).toArray(function(err, res)
 				{
 					if (err) throw err;
 
@@ -120,7 +113,7 @@ app.post('/visualize', function(req, red)
 			}
 			else if(obj.year != "")
 			{
-				cur.collection("films").find({ year : parseInt(obj.year) }).toArray(function(err, res)
+				cur.collection("films").find({ year : year }).limit(limit).toArray(function(err, res)
 				{
 					if (err) throw err;
 
@@ -138,7 +131,7 @@ app.post('/visualize', function(req, red)
 		{
 			//console.log("visualize");
 
-			cur.collection("films").find({}).toArray(function(err, res)
+			cur.collection("films").find({}).limit(limit).toArray(function(err, res)
 			{
 				if (err) throw err;
 
